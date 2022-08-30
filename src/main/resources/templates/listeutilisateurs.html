@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Liste des utilisateurs</title>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Rôle</th>
+				<th>Nb articles</th>
+				<th>Articles</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="pers : ${utilisateurs}">
+				<td th:text="${pers.nom}">Nom de la personne</td>
+				<td th:text="${pers.role}">Rôle de la personne</td>
+				<td th:text="${pers.articles.size()}">42</td>
+				<td>
+					<table border="1">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nom</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="art : ${pers.articles}">
+								<td th:text="${art.id}">id article</td>
+								<td th:text="${art.nom}">Nom article</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
